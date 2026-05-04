@@ -228,6 +228,24 @@ function premium(){
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js');
 }
+  <!-- tombol input -->
+<input type="password" id="kode" placeholder="Masukkan kode">
+<button onclick="unlock()">Unlock Premium</button>
+
+<!-- SCRIPT TARUH DI SINI -->
+<script>
+function unlock(){
+  let kode = document.getElementById("kode").value;
+
+  if(kode === "SCORPIO999"){
+    window.location.href = "premium.html";
+  } else {
+    alert("Kode salah!");
+}
+</script>
+
+</body>
+</html>
 </script>
 
 </body>

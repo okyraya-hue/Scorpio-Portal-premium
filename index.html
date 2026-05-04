@@ -24,13 +24,6 @@ header{
   font-weight:bold;
 }
 
-/* LOGO */
-.logo{
-  width:70px;
-  display:block;
-  margin:auto;
-}
-
 /* GLASS */
 .glass{
   background: rgba(255,255,255,0.08);
@@ -50,18 +43,6 @@ header{
   color:white;
   margin-top:10px;
   cursor:pointer;
-}
-
-/* ADS */
-.ads{
-  background:#111a2e;
-  border:1px dashed #666;
-  padding:15px;
-  text-align:center;
-  border-radius:12px;
-  margin:15px;
-  font-size:13px;
-  opacity:0.8;
 }
 
 /* INPUT */
@@ -101,22 +82,10 @@ input{
 <body>
 
 <header>
-
-<svg class="logo" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="45" fill="#f43f5e"/>
-  <text x="50" y="58" text-anchor="middle" font-size="40" fill="white">♏</text>
-</svg>
-
-SCORPIO FORTUNE PREMIUM
-
+♏ Scorpio Fortune Premium
 </header>
 
-<!-- ADS -->
-<div class="ads">
-🔥 Iklan / AdSense Slot
-</div>
-
-<!-- ZODIAK -->
+<!-- 🔮 ZODIAK -->
 <section class="glass">
   <h2>🔮 Zodiak Scorpio</h2>
   <input type="date" id="birth">
@@ -124,7 +93,7 @@ SCORPIO FORTUNE PREMIUM
   <div class="result" id="resZ"></div>
 </section>
 
-<!-- PRIMBON -->
+<!-- 🌙 PRIMBON -->
 <section class="glass">
   <h2>🌙 Ramalan Primbon</h2>
 
@@ -136,7 +105,7 @@ SCORPIO FORTUNE PREMIUM
   <div class="result" id="resP"></div>
 </section>
 
-<!-- 💰 PREMIUM LOCK -->
+<!-- 🔐 UNLOCK PREMIUM -->
 <section class="glass">
   <h2>💎 Unlock Premium</h2>
 
@@ -158,13 +127,24 @@ SCORPIO FORTUNE PREMIUM
   <div class="share">
     <button class="wa" onclick="shareWA()">Share WA</button>
     <button class="copy" onclick="copyLink()">Copy Link</button>
-    <button class="pro" onclick="unlock()">Unlock</button>
   </div>
 
   <div class="result" id="msg2"></div>
 </section>
 
 <script>
+
+/* 🔐 FIX UNLOCK (INI YANG BENAR) */
+function unlock(){
+  let p = document.getElementById("kode").value.trim();
+
+  if(p === "SCORPIO999"){
+    sessionStorage.setItem("scorpio_access","true");
+    window.location.href = "premium.html";
+  } else {
+    document.getElementById("msg").innerHTML = "❌ Kode salah!";
+  }
+}
 
 /* 🔮 ZODIAK */
 function zodiak(){
@@ -213,16 +193,6 @@ function copyLink(){
   document.getElementById("msg2").innerHTML="✔ Link dicopy!";
 }
 
-/* 🔐 UNLOCK FIX */
-function cek(){
-  let p = document.getElementById("pass").value;
-
-  if(p === "SCORPIO999"){
-    sessionStorage.setItem("scorpio_access","true");
-    window.location.href = "premium.html";
-  } else {
-    document.getElementById("msg").innerHTML = "❌ Kode salah!";
-  }
 /* PWA */
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js');

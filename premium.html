@@ -43,6 +43,14 @@ button{
 
 /* 🔐 CEK ACCESS (AMAN & STABIL) */
 window.onload = function(){
+  <script>
+const access = sessionStorage.getItem("scorpio_access");
+
+if(access !== "true"){
+  alert("❌ Akses ditolak!");
+  window.location.href = "index.html";
+}
+</script>
 
   const access = sessionStorage.getItem("scorpio_access");
 

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Scorpio Fortune Premium</title>
+
+<link rel="manifest" href="manifest.json">
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background: radial-gradient(circle at top,#1a1f3c,#0b1220);
+  color:#fff;
+}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:20px;
+  font-size:22px;
+  font-weight:bold;
+}
+
+/* LOGO */
+.logo{
+  width:70px;
+  display:block;
+  margin:auto;
+}
+
+/* GLASS */
+.glass{
+  background: rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  border-radius:18px;
+  padding:20px;
+  margin:15px;
+}
+
+/* BUTTON */
+.btn{
+  padding:10px 14px;
+  border:none;
+  border-radius:10px;
+  background:#f43f5e;
+  color:white;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+/* ADS SLOT */
+.ads{
+  background:#111a2e;
+  border:1px dashed #666;
+  padding:15px;
+  text-align:center;
+  border-radius:12px;
+  margin:15px;
+  font-size:13px;
+  opacity:0.8;
+}
+
+/* PREMIUM LOCK */
+.lock{
+  background: rgba(0,0,0,0.4);
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border-radius:10px;
+  border:none;
+}
+
+.result{
+  margin-top:10px;
+  color:#fbcfe8;
+}
+
+/* SHARE */
+.share{
+  display:flex;
+  gap:10px;
+}
+
+.share button{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+}
+
+.wa{background:#25D366;color:white;}
+.copy{background:#3b82f6;color:white;}
+.pro{background:#f59e0b;color:black;}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<svg class="logo" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="45" fill="#f43f5e"/>
+  <text x="50" y="58" text-anchor="middle" font-size="40" fill="white">♏</text>
+</svg>
+
+SCORPIO FORTUNE PREMIUM
+
+</header>
+
+<!-- ADS SLOT (MONETISASI) -->
+<div class="ads">
+  🔥 Iklan / AdSense Slot (Letakkan script ads di sini)
+</div>
+
+<!-- ZODIAK -->
+<section class="glass">
+  <h2>🔮 Zodiak Scorpio</h2>
+  <input type="date" id="birth">
+  <button class="btn" onclick="zodiak()">Cek</button>
+  <div class="result" id="resZ"></div>
+</section>
+
+<!-- PRIMBON -->
+<section class="glass">
+  <h2>🌙 Ramalan Primbon</h2>
+
+  <input type="text" id="nama" placeholder="Nama kamu">
+  <input type="date" id="tgl">
+
+  <button class="btn" onclick="ramal()">Lihat Ramalan</button>
+
+  <div class="result" id="resP"></div>
+</section>
+
+<!-- 💰 AFFILIATE / PRODUK DIGITAL -->
+<section class="glass">
+  <h2>💰 Upgrade Premium</h2>
+
+  <p>Dapatkan ramalan lengkap + fitur eksklusif:</p>
+
+  <div class="lock">
+    🔒 Konten Premium Terkunci
+  </div>
+
+  <button class="btn" onclick="window.open('https://wa.me/6280000000000')">
+    💬 Chat Admin Premium
+  </button>
+</section>
+
+<!-- 🚀 VIRAL SHARE -->
+<section class="glass">
+  <h2>🚀 Viral Tools</h2>
+
+  <div class="share">
+    <button class="wa" onclick="shareWA()">Share WA</button>
+    <button class="copy" onclick="copyLink()">Copy Link</button>
+    <button class="pro" onclick="premium()">Unlock Premium</button>
+  </div>
+
+  <div class="result" id="msg"></div>
+</section>
+
+<script>
+
+/* ZODIAK */
+function zodiak(){
+  let d=new Date(document.getElementById("birth").value);
+  let m=d.getMonth()+1;
+  let day=d.getDate();
+
+  if((m==10&&day>=23)||(m==11&&day<=21)){
+    document.getElementById("resZ").innerHTML="♏ Scorpio 🔥 kuat & misterius";
+  }else{
+    document.getElementById("resZ").innerHTML="✨ bukan Scorpio";
+  }
+}
+
+/* PRIMBON */
+function ramal(){
+  let nama=document.getElementById("nama").value;
+  let tgl=document.getElementById("tgl").value;
+
+  let d=new Date(tgl);
+
+  let hari=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+  let p=["Legi","Pahing","Pon","Wage","Kliwon"];
+
+  let h=hari[d.getDay()];
+  let pr=p[(d.getDate()+d.getMonth())%5];
+
+  let unsur=["🔥 Api","🌊 Air","🌱 Tanah","💨 Angin"];
+  let u=unsur[(nama.length+d.getDate())%4];
+
+  document.getElementById("resP").innerHTML=
+  "👤 "+nama+"<br>"+
+  "📅 "+h+" "+pr+"<br>"+
+  "🌿 "+u;
+}
+
+/* SHARE WA */
+function shareWA(){
+  let url=window.location.href;
+  window.open("https://wa.me/?text="+encodeURIComponent("🔥 Scorpio Fortune App "+url));
+}
+
+/* COPY */
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href);
+  document.getElementById("msg").innerHTML="✔ Link dicopy!";
+}
+
+/* PREMIUM CTA */
+function premium(){
+  window.open("https://wa.me/6280000000000");
+}
+
+/* PWA */
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+
+</body>
+</html>

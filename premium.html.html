@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scorpio App</title>
+
+<style>
+body{
+  margin:0;
+  font-family:sans-serif;
+  background:#0b1220;
+  color:#fff;
+  text-align:center;
+}
+
+.glass{
+  background:rgba(255,255,255,0.08);
+  padding:20px;
+  margin:20px;
+  border-radius:15px;
+}
+
+input{
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  width:80%;
+}
+
+button{
+  padding:10px 15px;
+  margin-top:10px;
+  border:none;
+  border-radius:10px;
+  background:#f43f5e;
+  color:white;
+  cursor:pointer;
+}
+
+.lock{
+  font-size:50px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>🔥 Scorpio Premium App</h2>
+
+<div class="glass">
+  <div class="lock">🔐</div>
+  <h3>Unlock Premium</h3>
+
+  <input type="password" id="pass" placeholder="Masukkan kode">
+
+  <br>
+  <button onclick="cek()">Buka Premium</button>
+
+  <br><br>
+
+  <button onclick="window.location='https://wa.me/6280000000000'">
+    💳 Beli Akses Premium
+  </button>
+
+  <p id="msg"></p>
+</div>
+
+<script>
+function cek(){
+  let p=document.getElementById("pass").value;
+
+  if(p==="SCORPIO999"){
+    window.location="premium.html";
+  } else {
+    document.getElementById("msg").innerHTML="❌ Kode salah!";
+  }
+}
+</script>
+
+</body>
+</html>

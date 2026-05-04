@@ -52,7 +52,7 @@ header{
   cursor:pointer;
 }
 
-/* ADS SLOT */
+/* ADS */
 .ads{
   background:#111a2e;
   border:1px dashed #666;
@@ -64,14 +64,7 @@ header{
   opacity:0.8;
 }
 
-/* PREMIUM LOCK */
-.lock{
-  background: rgba(0,0,0,0.4);
-  padding:15px;
-  border-radius:12px;
-  text-align:center;
-}
-
+/* INPUT */
 input{
   width:100%;
   padding:10px;
@@ -80,6 +73,7 @@ input{
   border:none;
 }
 
+/* RESULT */
 .result{
   margin-top:10px;
   color:#fbcfe8;
@@ -117,9 +111,9 @@ SCORPIO FORTUNE PREMIUM
 
 </header>
 
-<!-- ADS SLOT (MONETISASI) -->
+<!-- ADS -->
 <div class="ads">
-  🔥 Iklan / AdSense Slot (Letakkan script ads di sini)
+🔥 Iklan / AdSense Slot
 </div>
 
 <!-- ZODIAK -->
@@ -142,37 +136,37 @@ SCORPIO FORTUNE PREMIUM
   <div class="result" id="resP"></div>
 </section>
 
-<!-- 💰 AFFILIATE / PRODUK DIGITAL -->
+<!-- 💰 PREMIUM LOCK -->
 <section class="glass">
-  <h2>💰 Upgrade Premium</h2>
+  <h2>💎 Unlock Premium</h2>
 
-  <p>Dapatkan ramalan lengkap + fitur eksklusif:</p>
+  <input type="password" id="kode" placeholder="Masukkan kode rahasia">
 
-  <div class="lock">
-    🔒 Konten Premium Terkunci
-  </div>
+  <button class="btn" onclick="unlock()">Unlock Premium</button>
 
   <button class="btn" onclick="window.open('https://wa.me/6289513237203')">
-    💬 Chat Admin Premium
+    💬 Beli Premium
   </button>
+
+  <div class="result" id="msg"></div>
 </section>
 
-<!-- 🚀 VIRAL SHARE -->
+<!-- 🚀 SHARE -->
 <section class="glass">
   <h2>🚀 Viral Tools</h2>
 
   <div class="share">
     <button class="wa" onclick="shareWA()">Share WA</button>
     <button class="copy" onclick="copyLink()">Copy Link</button>
-    <button class="pro" onclick="premium()">Unlock Premium</button>
+    <button class="pro" onclick="unlock()">Unlock</button>
   </div>
 
-  <div class="result" id="msg"></div>
+  <div class="result" id="msg2"></div>
 </section>
 
 <script>
 
-/* ZODIAK */
+/* 🔮 ZODIAK */
 function zodiak(){
   let d=new Date(document.getElementById("birth").value);
   let m=d.getMonth()+1;
@@ -180,12 +174,12 @@ function zodiak(){
 
   if((m==10&&day>=23)||(m==11&&day<=21)){
     document.getElementById("resZ").innerHTML="♏ Scorpio 🔥 kuat & misterius";
-  }else{
+  } else {
     document.getElementById("resZ").innerHTML="✨ bukan Scorpio";
   }
 }
 
-/* PRIMBON */
+/* 🌙 PRIMBON */
 function ramal(){
   let nama=document.getElementById("nama").value;
   let tgl=document.getElementById("tgl").value;
@@ -207,45 +201,34 @@ function ramal(){
   "🌿 "+u;
 }
 
-/* SHARE WA */
+/* 🚀 SHARE WA */
 function shareWA(){
   let url=window.location.href;
-  window.open("https://wa.me/?text="+encodeURIComponent("🔥 Scorpio Fortune App "+url));
+  window.open("https://wa.me/?text="+encodeURIComponent("🔥 Scorpio App "+url));
 }
 
-/* COPY */
+/* 📋 COPY */
 function copyLink(){
   navigator.clipboard.writeText(window.location.href);
-  document.getElementById("msg").innerHTML="✔ Link dicopy!";
+  document.getElementById("msg2").innerHTML="✔ Link dicopy!";
 }
 
-/* PREMIUM CTA */
-function premium(){
-  window.open("https://wa.me/6280000000000");
+/* 🔐 UNLOCK FIX */
+function unlock(){
+  let kode=document.getElementById("kode").value.trim();
+
+  if(kode==="SCORPIO999"){
+    window.location.href="./premium.html";
+  } else {
+    document.getElementById("msg").innerHTML="❌ Kode salah!";
+  }
 }
 
 /* PWA */
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js');
 }
-  <!-- tombol input -->
-<input type="password" id="kode" placeholder="Masukkan kode">
-<button onclick="unlock()">Unlock Premium</button>
 
-<!-- SCRIPT TARUH DI SINI -->
-<script>
-function unlock(){
-  let kode = document.getElementById("kode").value;
-
-  if(kode === "SCORPIO999"){
-    window.location.href = "premium.html";
-  } else {
-    alert("Kode salah!");
-}
-</script>
-
-</body>
-</html>
 </script>
 
 </body>

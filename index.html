@@ -214,16 +214,15 @@ function copyLink(){
 }
 
 /* 🔐 UNLOCK FIX */
-function unlock(){
-  let kode=document.getElementById("kode").value.trim();
+function cek(){
+  let p = document.getElementById("pass").value;
 
-  if(kode==="SCORPIO999"){
-    window.location.href="./premium.html";
+  if(p === "SCORPIO999"){
+    sessionStorage.setItem("scorpio_access","true");
+    window.location.href = "premium.html";
   } else {
-    document.getElementById("msg").innerHTML="❌ Kode salah!";
+    document.getElementById("msg").innerHTML = "❌ Kode salah!";
   }
-}
-
 /* PWA */
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js');

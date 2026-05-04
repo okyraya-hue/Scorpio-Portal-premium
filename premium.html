@@ -77,6 +77,11 @@ function cek(){
   }
 }
 </script>
-
+<script>
+if(document.referrer.indexOf("index.html") === -1){
+  alert("❌ Akses ditolak!");
+  window.location.href = "index.html";
+}
+</script>
 </body>
 </html>
